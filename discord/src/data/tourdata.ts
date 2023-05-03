@@ -1,0 +1,86 @@
+export const tourData = [
+  {
+    key: 'canada2022',
+    name: 'Canada Summer 2022',
+    description: 'The Band tours Canada in Summer 2022',
+    poster: './static/tour_canada_2022.jpeg',
+    dates: [
+      { name: 'Ottawa, ON', date: '2022-06-03', venue: 'Bronson Centre', role: 'Ottawa_2022' },
+      {
+        name: 'Montreal, QC',
+        date: '2022-06-04',
+        venue: 'Theatre Fairmount',
+        role: 'Montreal_2022',
+      },
+      { name: 'Quebec City, QC', date: '2022-06-05', venue: 'Imperial Hall', role: 'Quebec_2022' },
+      { name: 'Oshawa, ON', date: '2022-06-09', venue: 'Biltmore Theatre', role: 'Oshawa_2022' },
+      { name: 'Toronto, ON', date: '2022-06-10', venue: 'The Danforth', role: 'Toronto_2022' },
+      { name: 'London, ON', date: '2022-06-11', venue: 'London Music Hall', role: 'London_2022' },
+    ],
+  },
+  {
+    key: 'seachangefest2022',
+    name: 'Sea Change Super Friendly Fest 2022',
+    description: 'The Band headlines Sea Change Super Friendly Fest 2022',
+    poster: './static/tour_seachange_2022.jpeg',
+    dates: [
+      { name: 'Edmonton, AB', date: '2022-09-11', venue: 'Union Hall', role: 'Edmonton_2022' },
+    ],
+  },
+  {
+    key: 'australia2023',
+    name: 'Australia 2023',
+    description: 'The Band joins Plini across Australia in February 2023',
+    poster: './static/tour_australia_2023.jpeg',
+    dates: [
+      { name: 'Sydney', date: '2023-01-28', venue: 'Metro Theatre', role: 'Sydney_2023' },
+      { name: 'Newcastle', date: '2023-01-29', venue: 'Newcastle Hotel', role: 'Newcastle_2023' },
+      { name: 'Canberra', date: '2023-02-01', venue: 'The Basement', role: 'Canberra_2023' },
+      { name: 'Brisbane', date: '2023-02-02', venue: 'Princess Theatre', role: 'Brisbane_2023' },
+      { name: 'Melbourne', date: '2023-02-03', venue: '170 Russell', role: 'Melbourne_2023' },
+      { name: 'Adelaide', date: '2023-02-04', venue: 'The Gov', role: 'Adelaide_2023' },
+      { name: 'Perth', date: '2023-02-05', venue: 'Magnet House', role: 'Perth_2023' },
+    ],
+  },
+  {
+    key: 'ontario2023',
+    name: 'Ontario 2023',
+    description: 'The Band embarks on Ontario Spring Tour 2023',
+    poster: './static/tour_ontario_2023.png',
+    dates: [
+      { name: 'London, ON', date: '2023-04-14', venue: 'London Music Hall', role: 'London_2023' },
+      { name: 'Hamilton, ON', date: '2023-04-15', venue: 'Bridgeworks', role: 'Hamilton_2023' },
+      {
+        name: 'Kingston, ON',
+        date: '2023-04-16',
+        venue: 'The Broom Factory',
+        role: 'Kingston_2023',
+      },
+      {
+        name: 'Ottawa, ON',
+        date: '2023-04-18',
+        venue: 'Overflow Brewing Co.',
+        role: 'Ottawa_2023',
+      },
+      {
+        name: 'St. Catherines, ON',
+        date: '2023-04-20',
+        venue: 'Moose & Goose',
+        role: 'St_Catherines_2023',
+      },
+      { name: 'Waterloo, ON', date: '2023-04-21', venue: 'Maxwells', role: 'Waterloo_2023' },
+      {
+        name: 'Guelph, ON (Night One)',
+        date: '2023-04-22',
+        venue: 'Onyx',
+        role: 'Guelph_Night_One_2023',
+      },
+      {
+        name: 'Guelph, ON (Night Two)',
+        date: '2023-04-23',
+        venue: 'Onyx',
+        role: 'Guelph_Night_Two_2023',
+      },
+    ],
+  },
+]
