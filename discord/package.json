@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "deploy": "ts-node src/deployCommands.ts",
-    "bot": "ts-node src/index.ts"
+    "bot": "ts-node src/cornbot.ts"
   },
   "author": "",
   "license": "ISC",

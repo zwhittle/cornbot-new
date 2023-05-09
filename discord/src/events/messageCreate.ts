@@ -3,13 +3,34 @@ import { MembersAPI } from '../api/MembersAPI'
 import { Message } from 'discord.js'
 import { submitReport } from '../utils/commands'
 import { UserReport } from '../interfaces/UserReport'
-import { badBotResponse, goodBotResponse } from '../utils/utils'
+import { CORN_ID, badBotResponse, goodBotResponse } from '../utils/utils'
+import { deleteAllEvents, launchHalloween2023Tour } from '../utils/exec'
 
 export async function messageCreate(message: Message<boolean>) {
   const content = message.content
   const botId = message.client.user.id
   const guildsApi = new GuildsAPI()
   const membersApi = new MembersAPI()
+
+  if (!message.guild && message.author.id === CORN_ID) {
+    console.log(message.content, message.cleanContent)
+    if (message.cleanContent.startsWith('exec')) {
+      const command = message.content.substring(5)
+
+      if (command === 'reboot') process.exit()
+
+      else if (command === 'test') await message.reply(`test`)
+
+      else if (command === 'launch halloween tour') {
+        await launchHalloween2023Tour(message.client)
+      }
+
+      else if (command === 'delete all events') {
+        await deleteAllEvents(message.client)
+      }
+    }
+    return
+  }
 
   if (message.member && message.guild) {
     const guild = await guildsApi.one(message.guild.id)

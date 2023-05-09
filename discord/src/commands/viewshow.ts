@@ -49,10 +49,14 @@ export const viewShow: Command = {
     const guild = interaction.guild
     const role = guild.roles.cache.find(r => r.name === showInput)
     const attendees = role.members
-    
+
     let attendeesString = ''
     attendees.map(a => (attendeesString += `<@${a.id}>\n`))
     if (attendeesString === '') attendeesString = 'No attendees from this Discord :('
+
+    const venueString = show.venue.maps_url
+      ? `[${show.venue.name}](${show.venue.maps_url})`
+      : show.venue.name
 
     const embed = new EmbedBuilder()
       .setColor(0xff7500)
@@ -62,7 +66,7 @@ export const viewShow: Command = {
       .addFields(
         { name: 'Tour', value: tour.name },
         { name: 'Date', value: formatDateLong(parseISO(show.date)) },
-        { name: 'Venue', value: show.venue },
+        { name: 'Venue', value: venueString },
         { name: 'Attendees', value: attendeesString }
       )
       .setTimestamp()
