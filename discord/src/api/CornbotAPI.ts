@@ -1,3 +1,6 @@
+import * as dotenv from 'dotenv'
+dotenv.config()
+
 export interface CornbotAPIResponse {
   status: number
   data: any
@@ -6,7 +9,7 @@ export interface CornbotAPIResponse {
 export class CornbotAPI<T> {
   apiKey: string
   path: string
-  baseUrl = 'http://localhost:4000'
+  baseUrl = process.env.API_DOMAIN as string
 
   constructor(path: string, apiKey?: string) {
     this.apiKey = apiKey ?? 'not yet implemented'
@@ -42,6 +45,7 @@ export class CornbotAPI<T> {
 
   async _post(data: T): Promise<CornbotAPIResponse> {
     const dstr = JSON.stringify(data)
+    console.log(dstr)
     const res = await fetch(this._url(), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
