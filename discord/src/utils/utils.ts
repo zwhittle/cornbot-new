@@ -1,6 +1,8 @@
 import { format } from 'date-fns'
 import { GuildMember } from 'discord.js'
 
+export const CORN_ID = '311688013857947658'
+
 export const months = {
   1: 'January',
   2: 'February',
