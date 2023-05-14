@@ -8,9 +8,11 @@ import { pronouns } from './pronouns'
 import { viewShow } from './viewshow'
 import { attendShow } from './attendshow'
 import { ctxUserInfo } from './ctxUserInfo'
+import { joke } from './joke'
 
 export const CommandList: Command[] = [
   corn,
+  joke,
   feedback,
   report,
   info,
