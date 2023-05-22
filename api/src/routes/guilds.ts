@@ -6,19 +6,19 @@ const prisma = new PrismaClient()
 const router = Router()
 
 router.get('/', async (req, res) => {
-  console.log(`${req.method}: ${req.url}`)
+  console.log(`${req.method}: ${req.originalUrl}`)
   const guilds = await prisma.guilds.findMany()
   res.json(guilds)
 })
 
 router.get('/:id', async (req, res) => {
-  console.log(`${req.method}: ${req.url}`)
+  console.log(`${req.method}: ${req.originalUrl}`)
   const guild = await prisma.guilds.findFirst({ where: { id: req.params.id } })
   res.json(guild)
 })
 
 router.post('/', async (req, res) => {
-  console.log(`${req.method}: ${req.url}`)
+  console.log(`${req.method}: ${req.originalUrl}`)
   const {
     id,
     name,
@@ -56,7 +56,7 @@ router.post('/', async (req, res) => {
 })
 
 router.put('/:id', async (req, res) => {
-  console.log(`${req.method}: ${req.url}`)
+  console.log(`${req.method}: ${req.originalUrl}`)
   const { id } = req.params
 
   const {
@@ -95,7 +95,7 @@ router.put('/:id', async (req, res) => {
 })
 
 router.patch('/:id', async (req, res) => {
-  console.log(`${req.method}: ${req.url}`)
+  console.log(`${req.method}: ${req.originalUrl}`)
   const { id } = req.params
   const updatedMember = await prisma.guilds.update({ where: { id: id }, data: req.body })
 
@@ -103,7 +103,7 @@ router.patch('/:id', async (req, res) => {
 })
 
 router.delete('/:id', async (req, res) => {
-  console.log(`${req.method}: ${req.url}`)
+  console.log(`${req.method}: ${req.originalUrl}`)
   const { id } = req.params
   const guild = await prisma.guilds.delete({
     where: { id: id },

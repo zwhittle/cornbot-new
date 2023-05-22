@@ -1,4 +1,5 @@
 import * as dotenv from 'dotenv'
+import { fetcher } from 'src/utils/utils'
 dotenv.config()
 
 export interface CornbotAPIResponse {
@@ -16,12 +17,9 @@ export class CornbotAPI<T> {
     this.path = path
   }
 
-  _url(id?: string | number): string {
-    let prefix = '/'
-    let url = this.baseUrl + prefix + this.path
-
-    if (id) url += '/' + id
-
+  _url(id?: string | number): URL {
+    let extPath = id ? `${this.path}/${id}` : this.path
+    let url = new URL(extPath, this.baseUrl)
     return url
   }
 
@@ -45,12 +43,13 @@ export class CornbotAPI<T> {
 
   async _post(data: T): Promise<CornbotAPIResponse> {
     const dstr = JSON.stringify(data)
-    console.log(dstr)
     const res = await fetch(this._url(), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: dstr,
     })
+
+    console.log(res.status, res.url)
 
     return { status: res.status, data: res.json() as T }
   }

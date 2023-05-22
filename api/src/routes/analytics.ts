@@ -5,41 +5,43 @@ const prisma = new PrismaClient()
 const router = Router()
 
 router.get('/', async (req, res) => {
-  console.log(`${req.method}: ${req.path}`)
+  console.log(`${req.method}: ${req.originalUrl}`)
   const events = await prisma.analyticsEvent.findMany()
   res.json(events)
 })
 
-router.get('/:guildId', async (req, res) => {
-  console.log(`${req.method}: ${req.path}`)
-  const { guildId } = req.params
-  const events = await prisma.analyticsEvent.findMany({ where: { guildId: guildId } })
+router.get('/:eventId', async (req, res) => {
+  console.log(`${req.method}: ${req.originalUrl}`)
+  const { eventId } = req.params
+  const events = await prisma.analyticsEvent.findMany({ where: { guildId: eventId } })
   res.json(events)
 })
 
 router.post('/', async (req, res) => {
-  console.log(`${req.method}: ${req.url}`)
-  const { type, eventName, guildId, channelId, memberId } = req.body
+  console.log(`${req.method}: ${req.originalUrl}`)
+  const { type, event, guildId, channelId, memberId } = req.body
+  console.log(req.body)
 
   try {
     const newEvent = await prisma.analyticsEvent.create({
       data: {
         type: type,
-        event: eventName,
+        event: event,
         guildId: guildId,
         channelId: channelId,
         memberId: memberId,
       },
     })
-
+    console.log(newEvent)
     res.json(newEvent)
   } catch (error) {
+    console.error(error)
     res.json({ error: error })
   }
 })
 
 router.put('/:id', async (req, res) => {
-  console.log(`${req.method}: ${req.url}`)
+  console.log(`${req.method}: ${req.originalUrl}`)
   const { id } = req.params
   const { type, guildId, channelId, memberId } = req.body
 
@@ -61,7 +63,7 @@ router.put('/:id', async (req, res) => {
 })
 
 router.delete('/:id', async (req, res) => {
-  console.log(`${req.method}: ${req.url}`)
+  console.log(`${req.method}: ${req.originalUrl}`)
   const { id } = req.params
   const deletedEvent = await prisma.analyticsEvent.delete({
     where: { id: Number(id) },

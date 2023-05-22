@@ -2,7 +2,7 @@ import { GuildMember } from 'discord.js'
 import { MembersAPI } from '../api/MembersAPI'
 import { Member } from '../interfaces/Member'
 import { welcomeMessage } from '../utils/utils'
-import { AnalyticsAPI } from 'src/api/AnalyticsAPI'
+import { AnalyticsAPI } from '../api/AnalyticsAPI'
 
 export async function guildMemberAdd(member: GuildMember) {
   const guild = member.guild

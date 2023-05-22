@@ -75,3 +75,7 @@ export function badBotResponse() {
   const random = Math.floor(Math.random() * responses.length)
   return responses[random]
 }
+
+export const fetcher = async (url: string) => {
+  return fetch(url).then(res => res.json())
+}
