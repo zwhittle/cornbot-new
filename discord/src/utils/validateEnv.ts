@@ -1,3 +1,4 @@
+import 'dotenv/config'
 export const validateEnv = () => {
   if (!process.env.DISCORD_TOKEN) {
     console.log('Missing DISCORD_TOKEN environment variable')

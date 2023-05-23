@@ -1,5 +1,4 @@
-import * as dotenv from 'dotenv'
-dotenv.config()
+import 'dotenv/config'
 import { Client, Partials } from 'discord.js'
 import { IntentOptions } from './config/IntentOptions'
 import { validateEnv } from './utils/validateEnv'
@@ -23,7 +22,7 @@ const main = async () => {
     async (oldMessage, newMessage) => await messageUpdate(oldMessage, newMessage)
   )
 
-  await BOT.login(process.env.BOT_TOKEN).then(value => console.log('Connected'))
+  await BOT.login(process.env.DISCORD_TOKEN).then(value => console.log('Connected'))
 }
 
 main()
